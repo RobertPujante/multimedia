@@ -3,9 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Music Player</title>
+
+    <!-- plugins -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/feather-icons/dist/feather.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Lora:ital,wght@1,500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <!-- ends here -->
+
+    <script src="resources/js/script.js"></script>
+    <link rel="stylesheet" href="resources/sass/style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="container-wrapper">
+            <div class="header">
+                <div class="menu">
+                    <a href="#" class="active"><i data-feather="menu"></i></a>
+                </div>
+                <div class="settings">
+                    <a href="#" class="active"><i data-feather="settings"></i></a>
+                </div>
+            </div>
+            <div class="artist-details">
+                <div class="artist-image">
+                    <span class="middle-circle"></span>
+                    <img id="artist" src="resources/images/marshmello.jpg" class="active" alt="marshmello" width="100">
+                </div>
+                <div class="artist-info">
+                    <h1>Happier</h1>
+                    <p>Marshmello ft. Bastille</p>
+                </div>
+            </div>
+            <div class="actions">
+                <button type="button" class="btn-action active" id="btn-repeat" title="Repeat">
+                    <i data-feather="repeat"></i>
+                </button>
+                <button type="button" class="btn-action active" id="btn-back" title="Back">
+                    <i data-feather="skip-back"></i>
+                </button>
+                <button type="button" class="btn-action active" id="btn-stop" title="Stop">
+                    <i data-feather="square"></i>
+                </button>
+                <button type="button" class="btn-action active" id="btn-pause" style="display: none;" title="Pause">
+                    <i data-feather="pause"></i>
+                </button>
+                <button type="button" class="btn-action active" id="btn-play" title="Play">
+                    <i data-feather="play"></i>
+                </button>
+                <button type="button" class="btn-action active" id="btn-next" title="Next">
+                    <i data-feather="skip-forward"></i>
+                </button>
+                <button type="button" class="btn-action active" id="btn-shuffle" title="Shuffle">
+                    <i data-feather="shuffle"></i>
+                </button>
+                <button type="button" class="btn-action active" id="btn-volume" title="Volume 100%">
+                    <span class="volume-x d-none">
+                        <i data-feather="volume-x"></i>
+                    </span>
+                    <span class="volume d-none">
+                        <i data-feather="volume"></i>
+                    </span>
+                    <span class="volume-1 d-none">
+                        <i data-feather="volume-1"></i>
+                    </span>
+                    <span class="volume-2">
+                        <i data-feather="volume-2"></i>
+                    </span>
+                </button>
+
+                <audio id="audio" controls style="display: none;">
+                    <source src="resources/audios/Marshmello ft. Bastille - Happier (Official Music Video).mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+    </div>
+    <script>
+        feather.replace();
+    </script>
 </body>
 </html>

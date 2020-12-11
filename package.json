@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/RobertPujante/multimedia#readme",
   "dependencies": {
-    "feather-icon": "^0.1.0"
+    "feather-icons": "^4.28.0",
+    "jquery": "^3.5.1"
   }
 }
