@@ -122,16 +122,14 @@ body .container .container-wrapper .header .settings {
 
 body .container .container-wrapper .header .settings .dropdown-settings {
   list-style: none;
-  -webkit-box-shadow: 9px 9px 18px #c9cdcf, -9px -9px 18px #e7ebef !important;
-          box-shadow: 9px 9px 18px #c9cdcf, -9px -9px 18px #e7ebef !important;
-  background: #d8dcdf;
-  border-radius: 20px;
-  overflow: hidden;
   position: absolute;
   top: 60px;
-  max-height: 0;
-  -webkit-transition: all .6s ease-in;
-  transition: all .6s ease-in;
+  display: none;
+  -webkit-box-shadow: 9px 9px 18px #c9cdcf, -9px -9px 18px #e7ebef !important;
+          box-shadow: 9px 9px 18px #c9cdcf, -9px -9px 18px #e7ebef !important;
+  border-radius: 20px;
+  background: #d8dcdf;
+  overflow: hidden;
 }
 
 body .container .container-wrapper .header .settings .dropdown-settings .dropdown-item {
@@ -146,12 +144,15 @@ body .container .container-wrapper .header .settings .dropdown-settings .dropdow
   font-size: 1.1em;
   font-family: "Hind Madurai", sans-serif;
   color: #000;
-  background: #d8dcdf;
 }
 
 body .container .container-wrapper .header .settings .dropdown-settings .dropdown-item a:active {
   -webkit-box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
           box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+}
+
+body .container .container-wrapper .header .settings .overflow {
+  overflow: hidden;
 }
 
 body .container .container-wrapper .artist-details {
@@ -265,7 +266,7 @@ body .container .container-wrapper .actions .btn-action {
   border: none;
   outline: none;
   padding: 15px;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 body .container .container-wrapper .actions .btn-action:active {

@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Lora:ital,wght@1,500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <!-- ends here -->
-
+    
     <script src="resources/js/script.js"></script>
     <link rel="stylesheet" href="resources/sass/style.css">
 </head>
@@ -40,16 +40,16 @@
                 <div class="artist-image">
                     <div class="disc">
                         <span class="middle-circle"></span>
-                        <img id="artist" src="resources/images/Marshmello_and_Bastille_Happier.png" class="img-playing" alt="marshmello" width="100">
+                        <img id="artist" class="img-playing">
                     </div>
                 </div>
                 <div class="artist-info">
-                    <h1>Happier</h1>
-                    <p>Marshmello ft. Bastille</p>
+                    <h1 id="song-title">Happier</h1>
+                    <p id="artist-info">Marshmello ft. Bastille</p>
                 </div>
             </div>
             <div class="actions">
-                <button type="button" class="btn-action active" id="btn-repeat" title="Repeat">
+                <button type="button" class="btn-action active" id="btn-repeat" title="Repeat: Off">
                     <i data-feather="repeat"></i>
                 </button>
                 <button type="button" class="btn-action active" id="btn-stop" title="Stop">
@@ -70,7 +70,7 @@
                 <button type="button" class="btn-action active" id="btn-shuffle" title="Shuffle">
                     <i data-feather="shuffle"></i>
                 </button>
-                <button type="button" class="btn-action active" id="btn-volume">
+                <button type="button" class="btn-action active" id="btn-volume" title="Volume 100%">
                     <span class="volume-x d-none">
                         <i data-feather="volume-x"></i>
                     </span>
@@ -100,8 +100,8 @@
                     <input type="range" name="volume-range" id="volume-range" min="0" max="1" value="1" step="0.1">
                 </div> -->
 
-                <audio id="audio" controls style="display: none;">
-                    <source src="resources/audios/Marshmello ft. Bastille - Happier (Official Music Video).mp3" type="audio/mpeg">
+                <audio id="audio" controls class="d-none">                    
+                    <source type="audio/mpeg">
                 </audio>
             </div>
         </div>
