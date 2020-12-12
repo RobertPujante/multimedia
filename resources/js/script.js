@@ -6,14 +6,25 @@ $(document).ready(() => {
         $('#artist').removeClass('rotation');
     }
 
+    $('#btn-settings').on('click', function(){
+        $(this).toggleClass('in-active');
+        var dropdown = document.getElementById('dropdown-settings');
+        if(dropdown.style.maxHeight){
+            dropdown.style.maxHeight = null;
+        }else{
+            dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+        }
+    });
+
     $('#btn-repeat').on('click', function(){
         audio.loop = true;
+        $(this).toggleClass('in-active');
     });
 
     $('#btn-stop').on('click', function(){
+        audio.load();
         $('#btn-play').show();
         $('#btn-pause').hide();
-        audio.load();
         if ($('#artist').hasClass('rotation')) {
             $('#artist').removeClass('rotation');
         }
