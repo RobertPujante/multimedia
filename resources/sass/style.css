@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #d8dcdf;
+  background-color: #eeeeee;
   font-family: "Lora", serif;
   font-size: .9em;
   font-weight: 500;
@@ -18,13 +18,13 @@ body .feather {
 }
 
 body .active {
-  -webkit-box-shadow: 9px 9px 18px #c9cdcf, -9px -9px 18px #e7ebef !important;
-          box-shadow: 9px 9px 18px #c9cdcf, -9px -9px 18px #e7ebef !important;
+  -webkit-box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001 !important;
+          box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001 !important;
 }
 
 body .in-active {
-  -webkit-box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
-          box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+  -webkit-box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001, inset -7px -7px 20px 0px #fff9, inset -4px -4px 5px 0px #fff9, inset 7px 7px 20px 0px #0003, inset 4px 4px 5px 0px #0001 !important;
+          box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001, inset -7px -7px 20px 0px #fff9, inset -4px -4px 5px 0px #fff9, inset 7px 7px 20px 0px #0003, inset 4px 4px 5px 0px #0001 !important;
 }
 
 body .d-none {
@@ -82,7 +82,7 @@ body .container .container-wrapper .header .link-item {
           align-items: center;
   justify-items: center;
   color: #000;
-  background: #d8dcdf;
+  background: #eeeeee;
   border-radius: 50px;
   padding: 15px;
   -webkit-transition: all .3s ease;
@@ -125,10 +125,10 @@ body .container .container-wrapper .header .settings .dropdown-settings {
   position: absolute;
   top: 60px;
   display: none;
-  -webkit-box-shadow: 9px 9px 18px #c9cdcf, -9px -9px 18px #e7ebef !important;
-          box-shadow: 9px 9px 18px #c9cdcf, -9px -9px 18px #e7ebef !important;
+  -webkit-box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001 !important;
+          box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001, inset 0px 0px 0px 0px #fff9, inset 0px 0px 0px 0px #0001 !important;
   border-radius: 20px;
-  background: #d8dcdf;
+  background: #eeeeee;
   overflow: hidden;
 }
 
@@ -147,8 +147,8 @@ body .container .container-wrapper .header .settings .dropdown-settings .dropdow
 }
 
 body .container .container-wrapper .header .settings .dropdown-settings .dropdown-item a:active {
-  -webkit-box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
-          box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+  -webkit-box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001, inset -7px -7px 20px 0px #fff9, inset -4px -4px 5px 0px #fff9, inset 7px 7px 20px 0px #0003, inset 4px 4px 5px 0px #0001 !important;
+          box-shadow: 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #fff9, 0px 0px 0px 0px #0001, 0px 0px 0px 0px #0001, inset -7px -7px 20px 0px #fff9, inset -4px -4px 5px 0px #fff9, inset 7px 7px 20px 0px #0003, inset 4px 4px 5px 0px #0001 !important;
 }
 
 body .container .container-wrapper .header .settings .overflow {
@@ -178,6 +178,7 @@ body .container .container-wrapper .artist-details .artist-image {
           align-items: center;
   -ms-flex-line-pack: end;
       align-content: flex-end;
+  position: relative;
 }
 
 body .container .container-wrapper .artist-details .artist-image .disc {
@@ -190,16 +191,8 @@ body .container .container-wrapper .artist-details .artist-image .disc {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-body .container .container-wrapper .artist-details .artist-image .disc .middle-circle {
-  position: absolute;
-  z-index: 99;
-  height: 25px;
-  width: 25px;
   border-radius: 50%;
-  background-color: #d8dcdf;
-  border: 1px solid #bbb;
+  padding: 7px;
 }
 
 body .container .container-wrapper .artist-details .artist-image .disc img {
@@ -261,12 +254,26 @@ body .container .container-wrapper .actions .btn-action {
       -ms-flex-pack: center;
           justify-content: center;
   color: #000;
-  background: #d8dcdf;
+  background: #eeeeee;
   border-radius: 50px;
   border: none;
   outline: none;
   padding: 15px;
   margin-right: 10px;
+}
+
+body .container .container-wrapper .actions .btn-action div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+  margin: 0;
 }
 
 body .container .container-wrapper .actions .btn-action:active {
@@ -290,7 +297,7 @@ body .container .container-wrapper .actions .range {
       -ms-flex-pack: center;
           justify-content: center;
   color: #000;
-  background: #d8dcdf;
+  background: #eeeeee;
   border-radius: 50px;
   border: none;
   outline: none;
