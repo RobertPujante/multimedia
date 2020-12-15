@@ -11,6 +11,7 @@ body{
     font-family: $lora;
     font-size: .9em;
     font-weight: 500;
+    
 
     .feather{
         width: 18px;
@@ -118,27 +119,38 @@ body{
                 flex-direction: column;
 
                 .artist-image{
-                    margin-bottom: 20px;
+                    margin-bottom: 30px;
                     display: flex;
                     align-items: center;
-                    align-content: flex-end;
+                    justify-content: center;
                     position: relative;
 
-                    // .disc-range{
-                    //     border: 7px solid #3903ff;
-                    //     position: absolute;
-                    //     border-radius: 50%;
-                    //     width: 100%;
-                    //     height: 100%;
-                    // }
-
                     .disc{
+                        z-index: 1;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         border-radius: 50%;
-                        padding: 7px;
-    
+                        padding: 3px;
+                        background-color: #ddd;
+                        border: 2px solid #bbb;
+                        position: relative;
+                        
+                        .disc-circle{                            
+                            border-radius: 50%;
+                            position: absolute;
+                            
+                            background-color: transparent;
+                            border: 2px solid #bbb;
+                            z-index: 2;
+
+                            .disc-circle-child{
+                                padding: 15px;
+                                background: $background;
+                                border-radius: 50%;
+                            }
+                        }
+
                         img{
                             border-radius: 50%;
                             object-fit: cover;
@@ -160,7 +172,7 @@ body{
                     text-align: center;
 
                     h1{
-                        font-size: 3em;
+                        
                         letter-spacing: 1px;
                         opacity: .8;
                     }
@@ -168,7 +180,7 @@ body{
                     p{
                         opacity: .8;
                         font-family: $madurai;
-                        font-size: 1.4em;
+                        font-size: 1.2em;
                     }
                 }
             }
@@ -176,54 +188,76 @@ body{
             .actions{
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-between;
 
-                .btn-action{
-                    cursor: pointer;
-                    text-align: center;
+                .align-left{
+                    display: flex;
+                    justify-content: flex-start !important;
+                }
+
+                .align-right{
+                    display: flex;
+                    justify-content: flex-end !important;
+                }
+
+                .audio-filters{
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    color: #000;
-                    background: $background;
-                    border-radius: $border-radius;
-                    border: none;
-                    outline: none;
-                    padding: 15px;
-                    margin-right: 10px;
+                    position: relative;
+                    flex: 1;
 
-                    div{
+                    .btn-action{
+                        cursor: pointer;
+                        text-align: center;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        padding: 0;
-                        margin: 0;
+                        color: #000;
+                        background: $background;
+                        border-radius: $border-radius;
+                        border: none;
+                        outline: none;
+                        padding: 15px;
+                        margin-right: 15px;
+    
+                        div{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 0;
+                            margin: 0;
+                        }
+    
+                        &:active{
+                            box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+                        }
+    
+                        &:last-child{
+                            margin-right: 0;
+                        }
                     }
-
-                    &:active{
-                        box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
-                    }
-
-                    &:last-child{
-                        margin-right: 0;
-                    }
-                }
-
-                .range{
-                    text-align: center;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #000;
-                    background: $background;
-                    border-radius: $border-radius;
-                    border: none;
-                    outline: none;
-                    padding: 12px;
-
-                    input[type="range"]{
-                        margin-left: 10px;
-                        transform: rotate(270deg);
+    
+                    .volume-range{
+                        position: absolute;
+                        right: 55px;
+    
+                        .range{
+                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: #000;
+                            background: $background;
+                            border-radius: $border-radius;
+                            border: none;
+                            outline: none;
+                            padding: 15px;
+        
+                            input[type="range"]{
+                                outline: none;
+                            }
+                        }
                     }
                 }
             }
@@ -239,3 +273,4 @@ body{
         transform: rotate(360deg);
     }
 }
+

@@ -169,19 +169,21 @@ body .container .container-wrapper .artist-details {
 }
 
 body .container .container-wrapper .artist-details .artist-image {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-line-pack: end;
-      align-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: relative;
 }
 
 body .container .container-wrapper .artist-details .artist-image .disc {
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,7 +194,24 @@ body .container .container-wrapper .artist-details .artist-image .disc {
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 50%;
-  padding: 7px;
+  padding: 3px;
+  background-color: #ddd;
+  border: 2px solid #bbb;
+  position: relative;
+}
+
+body .container .container-wrapper .artist-details .artist-image .disc .disc-circle {
+  border-radius: 50%;
+  position: absolute;
+  background-color: transparent;
+  border: 2px solid #bbb;
+  z-index: 2;
+}
+
+body .container .container-wrapper .artist-details .artist-image .disc .disc-circle .disc-circle-child {
+  padding: 15px;
+  background: #eeeeee;
+  border-radius: 50%;
 }
 
 body .container .container-wrapper .artist-details .artist-image .disc img {
@@ -218,7 +237,6 @@ body .container .container-wrapper .artist-details .artist-info {
 }
 
 body .container .container-wrapper .artist-details .artist-info h1 {
-  font-size: 3em;
   letter-spacing: 1px;
   opacity: .8;
 }
@@ -226,7 +244,7 @@ body .container .container-wrapper .artist-details .artist-info h1 {
 body .container .container-wrapper .artist-details .artist-info p {
   opacity: .8;
   font-family: "Hind Madurai", sans-serif;
-  font-size: 1.4em;
+  font-size: 1.2em;
 }
 
 body .container .container-wrapper .actions {
@@ -236,12 +254,46 @@ body .container .container-wrapper .actions {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .container .container-wrapper .actions .align-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+}
+
+body .container .container-wrapper .actions .align-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end !important;
+      -ms-flex-pack: end !important;
+          justify-content: flex-end !important;
+}
+
+body .container .container-wrapper .actions .audio-filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
-body .container .container-wrapper .actions .btn-action {
+body .container .container-wrapper .actions .audio-filters .btn-action {
   cursor: pointer;
   text-align: center;
   display: -webkit-box;
@@ -259,10 +311,10 @@ body .container .container-wrapper .actions .btn-action {
   border: none;
   outline: none;
   padding: 15px;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
-body .container .container-wrapper .actions .btn-action div {
+body .container .container-wrapper .actions .audio-filters .btn-action div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -276,16 +328,21 @@ body .container .container-wrapper .actions .btn-action div {
   margin: 0;
 }
 
-body .container .container-wrapper .actions .btn-action:active {
+body .container .container-wrapper .actions .audio-filters .btn-action:active {
   -webkit-box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
           box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
 }
 
-body .container .container-wrapper .actions .btn-action:last-child {
+body .container .container-wrapper .actions .audio-filters .btn-action:last-child {
   margin-right: 0;
 }
 
-body .container .container-wrapper .actions .range {
+body .container .container-wrapper .actions .audio-filters .volume-range {
+  position: absolute;
+  right: 55px;
+}
+
+body .container .container-wrapper .actions .audio-filters .volume-range .range {
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -301,13 +358,11 @@ body .container .container-wrapper .actions .range {
   border-radius: 50px;
   border: none;
   outline: none;
-  padding: 12px;
+  padding: 15px;
 }
 
-body .container .container-wrapper .actions .range input[type="range"] {
-  margin-left: 10px;
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
+body .container .container-wrapper .actions .audio-filters .volume-range .range input[type="range"] {
+  outline: none;
 }
 
 @-webkit-keyframes rotation {
