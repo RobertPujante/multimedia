@@ -6,242 +6,75 @@
     box-sizing: border-box;
 }
 
+html{
+    overflow-x: hidden;
+}
+
 body{
     background-color: $background;
-    font-family: $lora;
-    font-size: .9em;
-    font-weight: 500;
+    font-family: $lora !important;
+    font-size: .9em !important;
+    font-weight: 500 !important;
     
-
-    .feather{
-        width: 18px;
-        height: 18px;
-    }
-
-    .active{
-        box-shadow: $shadow-active;
-    }
-
-    .in-active{
-        box-shadow: $shadow-in-active;
-    }
-
-    .d-none{
-        display: none !important;
-    }
-
-    .container{
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+    .container-fluid{
+        
+        .feather{
+            width: 18px;
+            height: 18px;
+        }
+    
+        .active{
+            box-shadow: $shadow-active;
+        }
+    
+        .in-active{
+            box-shadow: $shadow-in-active;
+        }
 
         .container-wrapper{
-            padding: 20px;
-            margin: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: space-between;
-            flex: 1;
 
             .header{
+                width: 100%;
                 display: flex;
+                align-items: center;
                 justify-content: space-between;
-
-                .link-item{
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    justify-items: center;
-                    color: #000;
-                    background: $background;
-                    border-radius: $border-radius;
-                    padding: 15px;
-                    transition: all .3s ease;                    
-
-                    &:active{
-                        box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
-                    }
-                }
-
-                .menu{
-                    flex: 1;
-                    display: flex;
-                }
-
-                .settings{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    position: relative;                    
-                    flex: 1;
-
-                    .dropdown-settings{
-                        list-style: none;
-                        position: absolute;
-                        top: 60px;
-                        display: none;
-                        box-shadow: $shadow-active;
-                        border-radius: 20px;
-                        background: $background;
-                        overflow: hidden;
-
-                        .dropdown-item{                            
-                            display: flex;
-
-                            a{
-                                padding: 10px 20px;
-                                text-decoration: none;
-                                font-size: 1.1em;
-                                font-family: $madurai;
-                                color: #000;
-
-                                &:active{
-                                    box-shadow: $shadow-in-active;
-                                }
-                            }
-                        }
-                    }
-
-                    .overflow{
-                        overflow: hidden;
-                    }
-                }
                 
-            }
-
-            .artist-details{
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-
-                .artist-image{
-                    margin-bottom: 30px;
+                .header-items{
                     display: flex;
                     align-items: center;
-                    justify-content: center;
-                    position: relative;
-
-                    .disc{
-                        z-index: 1;
+        
+                    .header-buttons{
+                        outline: none;
+                        border: none;
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        border-radius: 50%;
-                        padding: 3px;
-                        background-color: #ddd;
-                        border: 2px solid #bbb;
-                        position: relative;
-                        
-                        .disc-circle{                            
-                            border-radius: 50%;
-                            position: absolute;
-                            
-                            background-color: transparent;
-                            border: 2px solid #bbb;
-                            z-index: 2;
-
-                            .disc-circle-child{
-                                padding: 15px;
-                                background: $background;
-                                border-radius: 50%;
-                            }
-                        }
-
-                        img{
-                            border-radius: 50%;
-                            object-fit: cover;
-                            filter: grayscale(10%);
-                        }
-
-                        .img-playing{
-                            height: 300px;
-                            width: 300px;
-                        }
-
-                        .rotation{
-                            animation: rotation 10s infinite linear !important;
-                        }
-                    }
-                }
-
-                .artist-info{
-                    text-align: center;
-
-                    h1{
-                        
-                        letter-spacing: 1px;
-                        opacity: .8;
-                    }
-
-                    p{
-                        opacity: .8;
-                        font-family: $madurai;
-                        font-size: 1.2em;
-                    }
-                }
-            }
-
-            .actions{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
-                .align-left{
-                    display: flex;
-                    justify-content: flex-start !important;
-                }
-
-                .align-right{
-                    display: flex;
-                    justify-content: flex-end !important;
-                }
-
-                .audio-filters{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    position: relative;
-                    flex: 1;
-
-                    .btn-action{
-                        cursor: pointer;
-                        text-align: center;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
+                        justify-items: center;
                         color: #000;
                         background: $background;
                         border-radius: $border-radius;
-                        border: none;
-                        outline: none;
                         padding: 15px;
-                        margin-right: 15px;
-    
+                        transition: all .3s ease;                    
+                        
                         div{
                             display: flex;
                             align-items: center;
-                            justify-content: center;
-                            padding: 0;
-                            margin: 0;
+                            justify-items: center;
                         }
-    
+                        
                         &:active{
                             box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
                         }
-    
-                        &:last-child{
-                            margin-right: 0;
-                        }
                     }
-    
+        
                     .volume-range{
                         position: absolute;
-                        right: 55px;
-    
+                        right: 70px;
+                        left: 20px;
+        
                         .range{
                             text-align: center;
                             display: flex;
@@ -256,9 +89,134 @@ body{
         
                             input[type="range"]{
                                 outline: none;
+                                width: 100%;
                             }
                         }
                     }
+                }
+            }
+
+            .artist{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                .artist-wrapper{
+                    flex-direction: column;
+                    align-items: center;
+
+                    .artist-disc{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative ;
+                
+                        .artist-image{
+                            z-index: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            height: 275px;
+                            width: 275px;
+                            overflow: hidden;
+                            padding: 5px;
+                            background-color: #ddd;
+                            border: 2px solid #bbb;
+                            position: relative;
+                            
+                            .disc-circle{                            
+                                border-radius: 50%;
+                                position: absolute;
+                                background-color: transparent;
+                                border: 2px solid #bbb;
+                                z-index: 2;
+                
+                                .disc-circle-child{
+                                    padding: 15px;
+                                    background: $background;
+                                    border-radius: 50%;
+                                }
+                            }
+                
+                            img{
+                                object-fit: fill;
+                                filter: grayscale(10%);
+                            }
+                
+                            .rotation{
+                                animation: rotation 10s infinite linear !important;
+                            }
+                        }
+                    }
+
+                    .artist-details{
+                        text-align: center;
+
+                        h2{
+                            letter-spacing: 1px;
+                            opacity: .8;
+                        }
+                
+                        p{
+                            opacity: .8;
+                            font-family: $madurai;
+                            font-size: 1.2em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .actions{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .filters{
+            display: flex;
+            align-items: center;
+            position: relative;
+            flex: 1;
+
+            .btn-action{
+                padding: 15px;
+            }
+            
+            .btn-action-sm{
+                padding: 10px;
+            }
+
+            .btn-action, .btn-action-sm{
+                cursor: pointer;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #000;
+                background: $background;
+                border-radius: $border-radius;
+                border: none;
+                outline: none;
+                
+                margin: 5px;
+
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                &:active{
+                    box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+                }
+
+                &:last-child{
+                    margin-right: 0;
                 }
             }
         }
