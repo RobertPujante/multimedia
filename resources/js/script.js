@@ -1,7 +1,6 @@
 feather.replace();
 $(function(){
     var audio = $('#audio')[0];
-    var count = (-1);
     var list = 0;
           
     $.get('resources/js/data.json', function(res){        
@@ -57,15 +56,6 @@ $(function(){
 
             $(this).toggleClass('in-active');
         });
-    
-        // $('#btn-stop').on('click', function(){
-        //     audio.load();
-        //     $('#btn-play').show();
-        //     $('#btn-pause').hide();
-        //     if ($('#artist').hasClass('rotation')) {
-        //         $('#artist').removeClass('rotation');
-        //     }
-        // });
     
         $('#btn-play').on('click', function(){
             audio.play();
@@ -186,15 +176,12 @@ $(function(){
 
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
-      
-        // While there remain elements to shuffle...
+    
         while (0 !== currentIndex) {
       
-          // Pick a remaining element...
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex -= 1;
-      
-          // And swap it with the current element.
+    
           temporaryValue = array[currentIndex];
           array[currentIndex] = array[randomIndex];
           array[randomIndex] = temporaryValue;
