@@ -1,4 +1,5 @@
-$(document).ready(() => {
+feather.replace();
+$(function(){
     var audio = $('#audio')[0];
     var count = (-1);
     var list = 0;
@@ -132,7 +133,7 @@ $(document).ready(() => {
         
         $('#btn-volume').on('click', function(){
             $('.range').toggleClass('d-none');
-            $(this).toggleClass('in-active');
+            // $(this).toggleClass('in-active');
         });
 
         $('.range').on('mouseleave', function(){
@@ -141,47 +142,6 @@ $(document).ready(() => {
                 $('#btn-volume').removeClass('in-active');
             }, 500);
         });
-    
-        // $('#btn-volume').on('click', function(){       
-        //     count = count + 1;
-    
-        //     if (count == 0) {
-        //         audio.volume = 0;
-        //         $('#volume-range').val(0);
-        //         $(this).addClass('in-active');
-        //         $('.volume-x').removeClass('d-none');
-        //         $('.volume').addClass('d-none');
-        //         $('.volume-1').addClass('d-none');
-        //         $('.volume-2').addClass('d-none');
-        //         $(this).attr('title', 'Volume 0%');
-        //     }else if(count == 1){
-        //         audio.volume = 0.25;
-        //         $('#volume-range').val(0.25);
-        //         $(this).removeClass('in-active');
-        //         $('.volume-x').addClass('d-none');
-        //         $('.volume').removeClass('d-none');
-        //         $('.volume-1').addClass('d-none');
-        //         $('.volume-2').addClass('d-none');
-        //         $(this).attr('title', 'Volume 25%');
-        //     }else if(count == 2){
-        //         audio.volume = 0.75;
-        //         $('#volume-range').val(0.75);
-        //         $('.volume-x').addClass('d-none');
-        //         $('.volume').addClass('d-none');
-        //         $('.volume-1').removeClass('d-none');
-        //         $('.volume-2').addClass('d-none');
-        //         $(this).attr('title', 'Volume 50%');
-        //     }else if(count == 3){
-        //         audio.volume = 1;
-        //         $('#volume-range').val(1);
-        //         $('.volume-x').addClass('d-none');
-        //         $('.volume').addClass('d-none');
-        //         $('.volume-1').addClass('d-none');
-        //         $('.volume-2').removeClass('d-none');
-        //         $(this).attr('title', 'Volume 100%');
-        //         count = (-1);
-        //     }
-        // });
 
         $('#volume-range').on('change', function(){
             let volume = $(this).val();
