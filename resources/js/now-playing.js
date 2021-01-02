@@ -1,14 +1,39 @@
 feather.replace();
-$(function(){
+
+$(document).ready(function(){
     let audio = $('#audio')[0];
     let list = 0;
-          
-    $.get('resources/js/data.json', function(res){        
+
+    $.get('../app/route.php', function(response){
+        let res = JSON.parse(response);
         $('#audio').attr('src', 'resources/audios/' + res[0].audio);
         $('#artist').attr('src', 'resources/images/' + res[0].image);
         $('#artist').attr('alt', res[0].title);
         $('#song-title').html(res[0].title);
         $('#artist-info').html(res[0].artist);
+
+        let songs = [];
+        res.forEach(element => {
+            let play_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+            let content = '\
+            <tr>\
+                <td>\
+                    <div class="d-flex flex-column align-items-start">\
+                        <a href="now-playing.php?id='+element.id+'" class="btn-play text-dark">\
+                            '+play_icon+'\
+                        </a>\
+                    </div>\
+                </td>\
+                <td>\
+                    <span>'+element.title+'</span>\
+                    <span>'+element.artist+'</span>\
+                </td>\
+                <td>3:12</td>\
+            </tr>';
+            songs.push(content);
+        });
+
+        $('#tbody').append(songs);
 
         $('#btn-menu').on('click', function(){
             let x = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
@@ -25,9 +50,9 @@ $(function(){
             $(this).toggleClass('in-active');
         });
 
-        $('#btn-settings').on('click', function(){
+        $('#btn-go-back').on('click', function(){
             $(this).toggleClass('in-active');
-            $('#dropdown-settings').toggle(100);
+            window.location.href = '/';
         });
     
         $('#btn-repeat').on('click', function(){
@@ -59,8 +84,8 @@ $(function(){
         });
     
         $('#btn-play').on('click', function(){
-            audio.play();
             $(this).hide();
+            audio.play();
             $('#btn-pause').show();
             $('#artist').addClass('rotation');
         });
@@ -171,6 +196,15 @@ $(function(){
         //     let totalDuration = audio.duration * 1000;
         //     $(this).val(totalDuration);
         // });
+
+        $('#btn-show').on('click', function(){
+            $(this).toggleClass('rotate');
+            $('#song-list-table').toggleClass('d-none');
+            $('.container-wrapper').toggleClass('justify-content-between');
+            $('.artist-wrapper').toggleClass('d-flex flex-row justify-content-start w-100');
+            $('.artist-image').toggleClass('shrink-image');
+            $('.artist-details').toggleClass('text-left ml-4');
+        });
     
         audio.onended = function(){
             $('#btn-next').trigger('click'); // load audio
