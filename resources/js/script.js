@@ -1,11 +1,12 @@
 feather.replace();
 $(function(){
-    var audio = $('#audio')[0];
-    var list = 0;
+    let audio = $('#audio')[0];
+    let list = 0;
           
     $.get('resources/js/data.json', function(res){        
         $('#audio').attr('src', 'resources/audios/' + res[0].audio);
         $('#artist').attr('src', 'resources/images/' + res[0].image);
+        $('#artist').attr('alt', res[0].title);
         $('#song-title').html(res[0].title);
         $('#artist-info').html(res[0].artist);
 
@@ -39,7 +40,7 @@ $(function(){
             } 
         });
 
-        var isClicked = 0;
+        let isClicked = 0;
         $('#btn-shuffle').on('click', function(){           
             let titles = [];
             isClicked = isClicked + 1;
@@ -137,6 +138,7 @@ $(function(){
             let volume = $(this).val();
             audio.volume = volume;
             $('#btn-volume').attr('title', 'Volume ' + (volume * 100) + '%');
+            $(this).attr('title', (volume * 100) + '%');
 
             if (volume == 0) {
                 $('#btn-volume').addClass('in-active');
@@ -164,29 +166,34 @@ $(function(){
                 $('.volume-2').removeClass('d-none');
             }
         });
+
+        // $('#audio-track').on('change', function(){
+        //     let totalDuration = audio.duration * 1000;
+        //     $(this).val(totalDuration);
+        // });
     
         audio.onended = function(){
             $('#btn-next').trigger('click'); // load audio
-            audio.play();
             $('#artist').addClass('rotation');
             $('#btn-play').hide();
             $('#btn-pause').show();
+            audio.play();
         }
     });
 
-    function shuffle(array) {
-        var currentIndex = array.length, temporaryValue, randomIndex;
+    // function shuffle(array) {
+    //     var currentIndex = array.length, temporaryValue, randomIndex;
     
-        while (0 !== currentIndex) {
+    //     while (0 !== currentIndex) {
       
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex -= 1;
+    //       randomIndex = Math.floor(Math.random() * currentIndex);
+    //       currentIndex -= 1;
     
-          temporaryValue = array[currentIndex];
-          array[currentIndex] = array[randomIndex];
-          array[randomIndex] = temporaryValue;
-        }
+    //       temporaryValue = array[currentIndex];
+    //       array[currentIndex] = array[randomIndex];
+    //       array[randomIndex] = temporaryValue;
+    //     }
       
-        return array;
-    }
+    //     return array;
+    // }
 });

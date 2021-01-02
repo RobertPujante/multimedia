@@ -6,9 +6,10 @@
     <meta name="description" content="Simple music player with neumorphism effects">
 
     <title>Music Player</title>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&family=Lora:ital,wght@1,500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="resources/sass/style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    
 </head>
 <body>
     <audio id="audio" controls class="d-none">
@@ -24,7 +25,7 @@
                         <i data-feather="menu"></i>
                     </button>
                 </div>
-                <div class="header-items justify-content-end w-100 position-relative">
+                <div class="header-items">
                     <div class="volume-range">
                         <div class="range active d-none">
                             <input type="range" name="volume-range" id="volume-range" min="0" max="1" value="1" step="0.01">
@@ -57,7 +58,7 @@
                             <div class="disc-circle">
                                 <div class="disc-circle-child"></div>
                             </div>
-                            <img id="artist" width="350" height="auto" alt="artist">
+                            <img id="artist" width="350" height="auto">
                         </div>
                     </div>
                     <div class="artist-details">
@@ -68,8 +69,12 @@
             </div>
             <!-- ends here -->
 
+            <div class="audio-tracker w-100">
+                <input type="range" name="audio-track" id="audio-track" class="audio-track" min="0" step="1">
+            </div>
+
             <div class="actions mb-4">                    
-                <div class="filters justify-content-between justify-content-md-center">
+                <div class="filters justify-content-center">
                     <!-- play buttons -->
                     <!-- <button type="button" class="btn-action active" id="btn-shuffle" title="Shuffle">
                         <i data-feather="shuffle"></i>
@@ -94,7 +99,6 @@
                     </button>
                     <!-- ends here -->
                 </div>
-            
                 
             </div>
             <!-- <div class="actions">
@@ -116,12 +120,9 @@
     <!-- plugins -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/feather-icons/dist/feather.min.js"></script>
-
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <!-- ends here -->
 
-    <link rel="stylesheet" href="resources/sass/style.css">
     <script src="resources/js/script.js"></script>   
 </body>
 </html>
