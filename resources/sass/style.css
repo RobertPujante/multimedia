@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  background-color: #eeeeee;
+  background-color: #eeeeee !important;
   font-family: "Lora", serif !important;
   font-size: .9em !important;
   font-weight: 500 !important;
@@ -55,7 +55,42 @@ body .container-fluid input[type="range"] {
   width: 100%;
 }
 
-body .container-fluid .btn-play {
+body .container-fluid .container-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .container-fluid .container-wrapper .header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .container-fluid .container-wrapper .header .header-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .container-fluid .container-wrapper .header .header-items .header-buttons {
   outline: none;
   border: none;
   display: -webkit-box;
@@ -71,5 +106,283 @@ body .container-fluid .btn-play {
   padding: 15px;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
+}
+
+body .container-fluid .container-wrapper .header .header-items .header-buttons div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+}
+
+body .container-fluid .container-wrapper .header .header-items .header-buttons:active {
+  -webkit-box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+          box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+}
+
+body .container-fluid .container-wrapper .header .header-items .volume-range {
+  position: absolute;
+  right: 70px;
+}
+
+body .container-fluid .container-wrapper .header .header-items .volume-range .range {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #000;
+  background: #eeeeee;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  padding: 12px;
+}
+
+body .container-fluid .container-wrapper .artist {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image {
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  height: 275px;
+  width: 275px;
+  overflow: hidden;
+  padding: 5px;
+  background-color: #ddd;
+  border: 2px solid #bbb;
+  position: relative;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image .disc-circle {
+  border-radius: 50%;
+  position: absolute;
+  background-color: transparent;
+  border: 2px solid #bbb;
+  z-index: 2;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image .disc-circle .disc-circle-child {
+  padding: 15px;
+  background: #eeeeee;
+  border-radius: 50%;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image img {
+  aspect-ratio: attr(width)/attr(height);
+  -o-object-fit: fill;
+     object-fit: fill;
+  -webkit-filter: grayscale(10%);
+          filter: grayscale(10%);
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image .rotation {
+  -webkit-animation: rotation 10s infinite linear !important;
+          animation: rotation 10s infinite linear !important;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .shrink-image {
+  height: 120px !important;
+  width: 120px !important;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details {
+  text-align: center;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details p {
+  opacity: .8;
+  font-family: "Hind Madurai", sans-serif;
+  font-size: 1.2em;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details h2 {
+  letter-spacing: .4px;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details .shrink-size-p {
+  font-size: 1em !important;
+}
+
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details .shrink-size-h2 {
+  font-size: 1.5em !important;
+}
+
+body .container-fluid .container-wrapper .audio-tracker .time-tracker {
+  opacity: .8;
+  font-family: "Hind Madurai", sans-serif;
+  font-size: .9em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .container-fluid .container-wrapper .audio-tracker .time-tracker .audio-track {
+  width: 100%;
+}
+
+body .container-fluid .container-wrapper .actions {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .container-fluid .container-wrapper .actions .filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+body .container-fluid .container-wrapper .actions .filters .btn-action {
+  padding: 15px;
+}
+
+body .container-fluid .container-wrapper .actions .filters .btn-action-sm {
+  padding: 10px;
+}
+
+body .container-fluid .container-wrapper .actions .filters .btn-action, body .container-fluid .container-wrapper .actions .filters .btn-action-sm {
+  cursor: pointer;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #000;
+  background: #eeeeee;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+}
+
+body .container-fluid .container-wrapper .actions .filters .btn-action div, body .container-fluid .container-wrapper .actions .filters .btn-action-sm div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+body .container-fluid .container-wrapper .actions .filters .btn-action:active, body .container-fluid .container-wrapper .actions .filters .btn-action-sm:active {
+  -webkit-box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+          box-shadow: inset 9px 9px 18px #c9cdcf, inset -9px -9px 18px #e7ebef !important;
+}
+
+body .container-fluid .container-wrapper .actions .filters .btn-action:last-child, body .container-fluid .container-wrapper .actions .filters .btn-action-sm:last-child {
+  margin-right: 0;
+}
+
+body .container-fluid .container-wrapper .show-list .btn-action {
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+body .container-fluid .container-wrapper .show-list .rotate {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+body .container-fluid .container-wrapper .table-responsive .table {
+  font-family: "Hind Madurai", sans-serif !important;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=style.css.map */
