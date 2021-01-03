@@ -1,70 +1,19 @@
 feather.replace();
 
-$(document).ready(function(){
+$(function(){
     let audio = $('#audio')[0];
+    audio.preload = "auto";
     let list = 0;
 
-    $.get('../app/route.php', function(response){
-        let res = JSON.parse(response);
+    $.get('resources/js/data.json', function(res){
+        showTable();
+
         $('#audio').attr('src', 'resources/audios/' + res[0].audio);
         $('#artist').attr('src', 'resources/images/' + res[0].image);
         $('#artist').attr('alt', res[0].title);
         $('#song-title').html(res[0].title);
-        $('#artist-info').html(res[0].artist);
-
-        let songs = [];
-        res.forEach(element => {
-            let play_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
-            let content = '\
-            <tr>\
-                <td>\
-                    <div class="d-flex flex-column align-items-start">\
-                        <a href="now-playing.php?id='+element.id+'" class="btn-play text-dark">\
-                            '+play_icon+'\
-                        </a>\
-                    </div>\
-                </td>\
-                <td>\
-                    <span>'+element.title+'</span>\
-                    <span>'+element.artist+'</span>\
-                </td>\
-                <td>3:12</td>\
-            </tr>';
-            songs.push(content);
-        });
-
-        $('#tbody').append(songs);
-
-        $('#btn-menu').on('click', function(){
-            let x = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
-            let m = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
-            let currentFeather = $(this).children()[0].classList[1];
-            if(currentFeather == 'feather-menu'){
-                $(this).empty();
-                $(this).prepend(x);
-            }else{
-                $(this).empty();
-                $(this).prepend(m);
-            }
-
-            $(this).toggleClass('in-active');
-        });
-
-        $('#btn-go-back').on('click', function(){
-            $(this).toggleClass('in-active');
-            window.location.href = '/';
-        });
-    
-        $('#btn-repeat').on('click', function(){
-            audio.loop = true;
-            $(this).toggleClass('in-active');
-            if($(this).attr('title') == "Repeat: Off"){
-                $(this).attr('title', 'Repeat: On');
-            }else{
-                $(this).attr('title', 'Repeat: Off');
-            } 
-        });
-
+        $('#artist-info').html(res[0].artist);        
+        
         let isClicked = 0;
         $('#btn-shuffle').on('click', function(){           
             let titles = [];
@@ -82,17 +31,33 @@ $(document).ready(function(){
 
             $(this).toggleClass('in-active');
         });
-    
+
+        $('#btn-repeat').on('click', function(){
+            audio.loop = true;
+            $(this).toggleClass('in-active');
+            if($(this).attr('title') == "Repeat: Off"){
+                $(this).attr('title', 'Repeat: On');
+            }else{
+                $(this).attr('title', 'Repeat: Off');
+            } 
+        });
+
         $('#btn-play').on('click', function(){
+            audioTracker();
             $(this).hide();
             audio.play();
+            
             $('#btn-pause').show();
             $('#artist').addClass('rotation');
         });
     
         $('#btn-pause').on('click', function(){
-            audio.pause();
+            audioTracker();
+
             $(this).hide();
+
+            audio.pause();
+
             $('#btn-play').show();
             $('#artist').removeClass('rotation');
         });
@@ -111,13 +76,11 @@ $(document).ready(function(){
                     $('#btn-next').attr('disabled', false);
                 }
 
-                audio.play();
-                $('#btn-play').hide();
-                $('#btn-pause').show();
-                $('#artist').addClass('rotation');
+                $('#btn-play').trigger('click');
             } else {
-                $(this).addClass('in-active');
-                $(this).attr('disabled', true);
+                list = res.length;
+                // $(this).addClass('in-active');
+                // $(this).attr('disabled', true);
                 $('#artist').addClass('rotation');
             }
         });
@@ -136,13 +99,11 @@ $(document).ready(function(){
                     $('#btn-back').attr('disabled', false);
                 }
 
-                audio.play();
-                $('#btn-play').hide();
-                $('#btn-pause').show();
-                $('#artist').addClass('rotation');
+                $('#btn-play').trigger('click');
             } else {
-                $(this).addClass('in-active');
-                $(this).attr('disabled', true);
+                list = 0;
+                // $(this).addClass('in-active');
+                // $(this).attr('disabled', true);
                 $('#artist').addClass('rotation');
             }
         });
@@ -204,14 +165,58 @@ $(document).ready(function(){
             $('.artist-wrapper').toggleClass('d-flex flex-row justify-content-start w-100');
             $('.artist-image').toggleClass('shrink-image');
             $('.artist-details').toggleClass('text-left ml-4');
+            $('#artist-info').toggleClass('shrink-size-p');
+            $('#song-title').toggleClass('shrink-size-h2');
         });
     
         audio.onended = function(){
-            $('#btn-next').trigger('click'); // load audio
+            $('#btn-next').trigger('click');
             $('#artist').addClass('rotation');
             $('#btn-play').hide();
             $('#btn-pause').show();
-            audio.play();
+        }
+
+        function showTable(){
+            let songs = [];
+            res.forEach(element => {
+                let play_icon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+                let content = '\
+                <tr>\
+                    <td>\
+                        <div class="d-flex flex-column align-items-start">\
+                            <a href="now-playing.php?id='+element.id+'" class="btn-play text-dark">\
+                                '+play_icon+'\
+                            </a>\
+                        </div>\
+                    </td>\
+                    <td>\
+                        <span>'+element.title+'</span>\
+                        <span>'+element.artist+'</span>\
+                    </td>\
+                    <td>3:12</td>\
+                </tr>';
+                songs.push(content);
+            });
+
+            $('#tbody').append(songs);
+        }
+
+        function audioTracker(){
+            let minsDuration = Math.floor(audio.duration / 60);
+            let secsDuration = Math.floor(audio.duration % 60);
+            $('#duration').html(minsDuration + ':' + secsDuration);
+    
+            setInterval(function(){         
+                let currentTime = Math.floor(audio.currentTime);
+                let mins = Math.floor(currentTime / 60);  
+                let secs = currentTime % 60;
+    
+                // mins = (mins < 10) ? '0' + mins : mins;
+                secs = (secs < 10) ? '0' + secs : secs;
+    
+                $('#current-time').html(mins + ":" + secs);
+    
+            }, 0);
         }
     });
 
