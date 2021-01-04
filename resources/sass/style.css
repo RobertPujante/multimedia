@@ -29,7 +29,7 @@ html {
 
 body {
   background-color: #eeeeee !important;
-  font-family: "Lora", serif !important;
+  font-family: "Hind Madurai", sans-serif !important;
   font-size: .9em !important;
   font-weight: 500 !important;
   font-display: swap;
@@ -180,57 +180,14 @@ body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc {
   position: relative;
 }
 
-body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image {
-  z-index: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 50%;
-  height: 275px;
-  width: 275px;
-  overflow: hidden;
-  padding: 5px;
-  background-color: #ddd;
-  border: 2px solid #bbb;
-  position: relative;
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .music-icon .feather {
+  width: 150px;
+  height: 150px;
 }
 
-body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image .disc-circle {
-  border-radius: 50%;
-  position: absolute;
-  background-color: transparent;
-  border: 2px solid #bbb;
-  z-index: 2;
-}
-
-body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image .disc-circle .disc-circle-child {
-  padding: 15px;
-  background: #eeeeee;
-  border-radius: 50%;
-}
-
-body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image img {
-  aspect-ratio: attr(width)/attr(height);
-  -o-object-fit: fill;
-     object-fit: fill;
-  -webkit-filter: grayscale(10%);
-          filter: grayscale(10%);
-}
-
-body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .artist-image .rotation {
-  -webkit-animation: rotation 10s infinite linear !important;
-          animation: rotation 10s infinite linear !important;
-}
-
-body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .shrink-image {
-  height: 120px !important;
-  width: 120px !important;
+body .container-fluid .container-wrapper .artist .artist-wrapper .artist-disc .shrink-music-icon .feather {
+  width: 80px !important;
+  height: 80px !important;
 }
 
 body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details {
@@ -239,7 +196,7 @@ body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details
 
 body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details p {
   opacity: .8;
-  font-family: "Hind Madurai", sans-serif;
+  font-family: "Lora", serif;
   font-size: 1.2em;
 }
 
@@ -255,22 +212,6 @@ body .container-fluid .container-wrapper .artist .artist-wrapper .artist-details
   font-size: 1.5em !important;
 }
 
-body .container-fluid .container-wrapper .audio-tracker .time-tracker {
-  opacity: .8;
-  font-family: "Hind Madurai", sans-serif;
-  font-size: .9em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-body .container-fluid .container-wrapper .audio-tracker .time-tracker .audio-track {
-  width: 100%;
-}
-
 body .container-fluid .container-wrapper .actions {
   width: 100%;
   display: -webkit-box;
@@ -282,6 +223,25 @@ body .container-fluid .container-wrapper .actions {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .container-fluid .container-wrapper .actions .audio-tracker .time-tracker {
+  opacity: .8;
+  font-size: .9em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .container-fluid .container-wrapper .actions .audio-tracker .time-tracker .audio-track {
+  width: 100%;
 }
 
 body .container-fluid .container-wrapper .actions .filters {
@@ -348,41 +308,19 @@ body .container-fluid .container-wrapper .actions .filters .btn-action:last-chil
   margin-right: 0;
 }
 
-body .container-fluid .container-wrapper .show-list .btn-action {
+body .container-fluid .container-wrapper .actions .show-list .btn-action {
   padding: 5px;
   border: none;
   outline: none;
   background-color: transparent;
 }
 
-body .container-fluid .container-wrapper .show-list .rotate {
+body .container-fluid .container-wrapper .actions .show-list .rotate {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
 body .container-fluid .container-wrapper .table-responsive .table {
   font-family: "Hind Madurai", sans-serif !important;
-}
-
-@-webkit-keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
 }
 /*# sourceMappingURL=style.css.map */

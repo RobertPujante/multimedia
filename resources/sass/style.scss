@@ -1,5 +1,43 @@
-@import 'fonts';
-@import 'variable';
+@font-face {
+    font-family: 'Hind_Madurai';
+    src: url('../fonts/Hind_Madurai/HindMadurai-SemiBold.ttf');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('../fonts/Lora/Lora-Italic-VariableFont_wght.ttf');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat/Montserrat-Regular.ttf');
+    font-display: swap;
+}
+
+$border-radius: 50px;
+$background: #eeeeee;
+$shadow-active: -7px -7px 20px 0px #fff9,
+    -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002,
+    4px 4px 5px 0px #0001,
+    inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001,
+    inset 0px 0px 0px 0px #fff9,
+    inset 0px 0px 0px 0px #0001 !important;
+$shadow-in-active: 0px 0px 0px 0px #fff9,
+    0px 0px 0px 0px #fff9,
+    0px 0px 0px 0px #0001,
+    0px 0px 0px 0px #0001,
+    inset -7px -7px 20px 0px #fff9,
+    inset -4px -4px 5px 0px #fff9,
+    inset 7px 7px 20px 0px #0003,
+    inset 4px 4px 5px 0px #0001 !important;
+
+$montserrat: 'Montserrat', sans-serif;
+$madurai: 'Hind Madurai', sans-serif;
+$lora: 'Lora', serif;
 
 *{
     margin: 0;
@@ -13,7 +51,7 @@ html{
 
 body{
     background-color: $background !important;
-    font-family: $lora !important;
+    font-family: $madurai !important;
     font-size: .9em !important;
     font-weight: 500 !important;
     font-display: swap;
@@ -108,51 +146,30 @@ body{
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        position: relative ;
-                
-                        .artist-image{
-                            z-index: 1;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            border-radius: 50%;
-                            height: 275px;
-                            width: 275px;
-                            overflow: hidden;
-                            padding: 5px;
-                            background-color: #ddd;
-                            border: 2px solid #bbb;
-                            position: relative;
-                            
-                            .disc-circle{                            
-                                border-radius: 50%;
-                                position: absolute;
-                                background-color: transparent;
-                                border: 2px solid #bbb;
-                                z-index: 2;
-                
-                                .disc-circle-child{
-                                    padding: 15px;
-                                    background: $background;
-                                    border-radius: 50%;
-                                }
-                            }
-                
-                            img{
-                                aspect-ratio: attr(width) / attr(height);
-                                object-fit: fill;
-                                filter: grayscale(10%);
-                            }
-                
-                            .rotation{
-                                animation: rotation 10s infinite linear !important;
+                        position: relative;
+                        
+                        .music-icon{
+                            .feather{
+                                width: 150px;
+                                height: 150px;
                             }
                         }
 
-                        .shrink-image{
-                            height: 120px !important;
-                            width: 120px !important;
+                        .shrink-music-icon{
+                            .feather{
+                                width: 80px !important;
+                                height: 80px !important;
+                            }
                         }
+                        // img{
+                        //     object-fit: fill;
+                        //     filter: grayscale(10%);
+                        // }
+
+                        // .shrink-image{
+                        //     height: 120px !important;
+                        //     width: 120px !important;
+                        // }
                     }
 
                     .artist-details{
@@ -160,7 +177,7 @@ body{
 
                         p{
                             opacity: .8;
-                            font-family: $madurai;
+                            font-family: $lora;
                             font-size: 1.2em;
                         }
 
@@ -179,25 +196,26 @@ body{
                 }
             }
 
-            .audio-tracker{        
-                .time-tracker{
-                    opacity: .8;
-                    font-family: $madurai;
-                    font-size: .9em;
-                    display: flex;
-                    align-items: center;
-
-                    .audio-track{
-                        width: 100%;
-                    }
-                }
-            }
         
             .actions{
                 width: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                flex-direction: column;
+
+                .audio-tracker{        
+                    .time-tracker{
+                        opacity: .8;
+                        font-size: .9em;              
+                        display: flex;
+                        align-items: center;
+    
+                        .audio-track{
+                            width: 100%;
+                        }
+                    }
+                }
         
                 .filters{
                     display: flex;
@@ -243,18 +261,18 @@ body{
                         }
                     }
                 }
-            }
 
-            .show-list{
-                .btn-action{
-                    padding: 5px;
-                    border: none;
-                    outline: none;
-                    background-color: transparent;
-                }
-
-                .rotate{
-                    transform: rotate(180deg);
+                .show-list{
+                    .btn-action{
+                        padding: 5px;
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                    }
+    
+                    .rotate{
+                        transform: rotate(180deg);
+                    }
                 }
             }
 
@@ -266,13 +284,3 @@ body{
         }
     }
 }
-
-@keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-

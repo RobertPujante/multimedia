@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Simple music player with neumorphism effects">
+    <meta name="description" content="Simple music player with neumorphism effects">    
 
     <title>Music Player</title>
 
-    <link rel="stylesheet" href="resources/sass/style.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="preload" href="node_modules/bootstrap/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="resources/sass/style.css" as="style">
 
-    <!-- plugins -->
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/feather-icons/dist/feather.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- ends here -->
+    <link rel="preload" href="node_modules/jquery/dist/jquery.min.js" as="script">
+    <link rel="preload" href="node_modules/feather-icons/dist/feather.min.js" as="script">
+    <link rel="preload" href="node_modules/bootstrap/dist/js/bootstrap.min.js" as="script">
+    <link rel="preload" href="resources/js/script.js" as="script">
+
+    <link rel="shortcut icon" href="resources/images/favicon/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/sass/style.css">
+
 </head>
 <body>
     <div class="container-fluid">
         <div class="container-wrapper justify-content-between vh-100">
             <!-- header -->
             <div class="header my-3">
-                
+                <div class="header-items">
+                    <img src="resources/images/favicon/favicon.png" alt="favicon" width="40" height="auto">
+                </div>
 
                 <div class="header-items h4 mb-0">Now Playing</div>
 
@@ -54,34 +60,32 @@
             <!-- ends here -->
 
             <!-- artist -->
-            <div class="artist mb-3">
-                <div class="artist-wrapper">
+            <div class="artist">
+                <div class="row no-gutters artist-wrapper">
                     <div class="artist-disc mb-2">
-                        <div class="artist-image">
-                            <div class="disc-circle">
-                                <div class="disc-circle-child"></div>
-                            </div>
-                            <img id="artist" width="350" height="auto">
-                        </div>
+                        <!-- <img id="artist" class="img-thumbnail active"> -->
+                        <span class="music-icon">
+                            <i data-feather="music"></i>
+                        </span>
                     </div>
                     <div class="artist-details">
-                        <p id="artist-info" class="mb-0">Marshmello ft. Bastille</p>
-                        <h2 id="song-title">Happier</h2>
+                        <p id="artist-info" class="mb-0"></p>
+                        <h2 id="song-title"></h2>
                     </div>
                 </div>
             </div>
             <!-- ends here -->
 
-            <div class="audio-tracker w-100 mb-3">
-                <div class="time-tracker">
-                    <div id="current-time" class="mr-2">0:00</div>
-                    <input class="audio-track" type="range" name="audio-track" id="audio-track" min="0" step="1" title="Audio Tracker">
-                    <div id="duration" class="ml-2">0:00</div>
-                </div>
-            </div>
-
             <div class="actions mb-3">
-                <div class="filters justify-content-between justify-content-sm-center">
+                <div class="audio-tracker w-100 mb-3">
+                    <div class="time-tracker">
+                        <div id="current-time" class="mr-2">0:00</div>
+                        <input class="audio-track" type="range" name="audio-track" id="audio-track" min="0" step="1" value="0" title="Audio Tracker">
+                        <div id="duration" class="ml-2">0:00</div>
+                    </div>
+                </div>
+
+                <div class="filters justify-content-between justify-content-sm-center mb-2">
                     <button type="button" class="btn-action active" id="btn-shuffle" title="Shuffle">
                         <i data-feather="shuffle"></i>
                     </button>
@@ -101,12 +105,12 @@
                         <i data-feather="repeat"></i>
                     </button>
                 </div>
-            </div>
 
-            <div class="show-list d-flex mb-3">
-                <button type="button" class="btn-action" id="btn-show" title="Show List">
-                    <i data-feather="chevron-up"></i>
-                </button>
+                <div class="show-list d-flex">
+                    <button type="button" class="btn-action" id="btn-show" title="Show List">
+                        <i data-feather="chevron-up"></i>
+                    </button>
+                </div>
             </div>
 
             <div class="table-responsive d-none mb-3" id="song-list-table">
@@ -119,6 +123,11 @@
 
     <audio id="audio" controls type="audio/mp3" class="d-none"></audio>
 
-    <script src="resources/js/script.js"></script> 
+    <!-- plugins -->
+    <script defer src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script defer src="node_modules/feather-icons/dist/feather.min.js"></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script defer src="resources/js/script.js"></script> 
+    <!-- ends here -->
 </body>
 </html>
