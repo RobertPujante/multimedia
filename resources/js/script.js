@@ -44,7 +44,6 @@ $(function(){
         });
 
         $('#btn-play').on('click', function(){
-            audioTracker();
             $(this).hide();
             audio.play();
             
@@ -52,8 +51,6 @@ $(function(){
         });
     
         $('#btn-pause').on('click', function(){
-            audioTracker();
-
             $(this).hide();
 
             audio.pause();
@@ -161,30 +158,33 @@ $(function(){
 
         function showTable(list = ''){
             let songs = [];
+            let barchart2 = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>';
+            let barchart1 = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>';
 
             $('#tbody').empty();
             for (let i = 0; i < res.length; i++) {
                 let content = '';
                 let el = res[i];
                 if (list == i) {
+                    let artist = el.title + ' - ' + el.artist;
                     content += '\
                     <tr class="table-primary table-row" id="'+el.id+'">\
                         <td>\
-                            <span>'+el.title+'</span>\
-                            <span> - </span>\
-                            <span>'+el.artist+'</span>\
+                            <span class="mr-1">'+barchart2+'</span>\
+                            <span>'+artist+'</span>\
                         </td>\
-                        <td>3:12</td>\
+                        <td class="d-flex justify-content-end">\
+                            <span id="list-duration">0:00</span>\
+                        </td>\
                     </tr>';
                 }else{
                     content += '\
                     <tr class="table-row" id="'+el.id+'">\
-                        <td>\
+                        <td colspan="2">\
                             <span>'+el.title+'</span>\
                             <span> - </span>\
                             <span>'+el.artist+'</span>\
                         </td>\
-                        <td>3:12</td>\
                     </tr>';
                 }
                 songs.push(content);
@@ -195,23 +195,23 @@ $(function(){
 
         showTable();
 
-        function audioTracker(){
+        setInterval(function(){         
             let minsDuration = Math.floor(audio.duration / 60);
             let secsDuration = Math.floor(audio.duration % 60);
-            $('#duration').html(minsDuration + ':' + secsDuration);
-    
-            setInterval(function(){         
-                let currentTime = Math.floor(audio.currentTime);
-                let mins = Math.floor(currentTime / 60);  
-                let secs = currentTime % 60;
-    
-                // mins = (mins < 10) ? '0' + mins : mins;
-                secs = (secs < 10) ? '0' + secs : secs;
-    
-                $('#current-time').html(mins + ":" + secs);
-    
-            }, 0);
-        }
+            minsDuration = (isNaN(minsDuration)) ? 0 : minsDuration;
+            secsDuration = isNaN(secsDuration) ? '00' : secsDuration;
+            let time =  minsDuration + ':' + secsDuration;
+
+            let currentTime = Math.floor(audio.currentTime);
+            let mins = Math.floor(currentTime / 60);  
+            let secs = currentTime % 60;
+            secs = (secs < 10) ? '0' + secs : secs;
+
+            $('#duration').html(time);
+            $('#list-duration').html(time);
+            $('#current-time').html(mins + ":" + secs);
+            $('#audio-track').attr('max', Math.floor(audio.duration));
+        }, 1000);
 
         audio.onended = function(){
             $('#btn-next').trigger('click');
