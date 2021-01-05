@@ -49,12 +49,60 @@ html{
     overflow-x: hidden;
 }
 
+
+
 body{
     background-color: $background !important;
     font-family: $madurai !important;
     font-size: .9em !important;
     font-weight: 500 !important;
     font-display: swap;
+
+    // chrome
+    input[type="range"]::-webkit-slider-runnable-track {
+        background: $background;
+        border-radius: 20px;
+        box-shadow: $shadow-in-active;
+    }
+
+    input[type="range"]::-webkit-slider-thumb{
+        background-color: $background !important;
+        box-shadow: $shadow-active;
+        z-index: 9999;
+        border-radius: 50%;
+        padding: 5px;
+    }
+    // ends here
+
+    // mozilla
+    input[type="range"]::-moz-range-track {
+        padding: 2px;
+        background: $background;
+        border-radius: 20px;
+        box-shadow: $shadow-in-active;
+    }
+
+    input[type="range"]::-moz-range-progress{
+        padding: 2px;
+        border-radius: 20px;
+        background-color: #007bff;
+    }
+
+    input[type="range"]::-moz-range-thumb{
+        border-radius: 50px;
+        background-color: #007bff;
+        border: none;
+        padding: 3px;
+        box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+    }
+
+    // ends here
+
+    input[type="range"]::-ms-track {
+        box-shadow: $shadow-in-active;
+        border-radius: 20px;
+        background-color: $background;
+    }
     
     .container-fluid{
         .feather{
@@ -128,6 +176,10 @@ body{
                             border: none;
                             outline: none;
                             padding: 12px;
+
+                            input[type="range"]{
+                                background: $background;
+                            }
                         }
                     }
                 }
@@ -214,54 +266,7 @@ body{
                         .audio-track{
                             width: 100%;
                             background: $background;
-                        }
-                        
-                        // chrome
-                        input::-webkit-slider-runnable-track {
-                            background: $background;
-                            border-radius: 20px;
-                            box-shadow: $shadow-in-active;
-                        }
-
-                        input::-webkit-slider-thumb{
-                            background-color: $background !important;
-                            box-shadow: $shadow-active;
-                            z-index: 9999;
-                            border-radius: 50%;
-                            padding: 5px;
-                        }
-                        // ends here
-
-                        // mozilla
-                        input::-moz-range-track {
-                            padding: 5px;
-                            background: $background;
-                            border-radius: 20px;
-                            box-shadow: $shadow-in-active;
-                        }
-
-                        input::-moz-range-progress{
-                            padding: 5px;
-                            border-radius: 20px;
-                            background-color: #007bff;
-                        }
-
-                        input::-moz-range-thumb{
-                            border-radius: 50px;
-                            background-color: #007bff;
-                            border: none;
-                            padding: 5px;
-                            box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
-                        }
-
-                        // ends here
-
-                        input::-ms-track {
-                            box-shadow: $shadow-in-active;
-                            border-radius: 20px;
-                            background-color: $background;
-                        }
-                        
+                        }                        
                     }
                 }
         
