@@ -48,6 +48,7 @@ $(function(){
             audio.play();
             
             $('#btn-pause').show();
+            runAudioTracker();
         });
     
         $('#btn-pause').on('click', function(){
@@ -195,23 +196,42 @@ $(function(){
 
         showTable();
 
-        setInterval(function(){         
-            let minsDuration = Math.floor(audio.duration / 60);
-            let secsDuration = Math.floor(audio.duration % 60);
-            minsDuration = (isNaN(minsDuration)) ? 0 : minsDuration;
-            secsDuration = isNaN(secsDuration) ? '00' : secsDuration;
-            let time =  minsDuration + ':' + secsDuration;
+        function runAudioTracker(){
+            let track = 0;
+            const observeThis = $('#current-time')[0];
+            const observer = new MutationObserver(function() {
+                $('#audio-track').val(track++);
 
-            let currentTime = Math.floor(audio.currentTime);
-            let mins = Math.floor(currentTime / 60);  
-            let secs = currentTime % 60;
-            secs = (secs < 10) ? '0' + secs : secs;
+                if (track == $('#audio-track').attr('max')) {
+                    track = 0;
+                    $('#audio-track').val(0);
+                    clearInterval(setInterval);
+                }
+            });
 
-            $('#duration').html(time);
-            $('#list-duration').html(time);
-            $('#current-time').html(mins + ":" + secs);
-            $('#audio-track').attr('max', Math.floor(audio.duration));
-        }, 1000);
+            observer.observe(observeThis, {subtree: true, childList: true});
+
+            setTimeout(function(){
+                let minsDuration = Math.floor(audio.duration / 60);
+                let secsDuration = Math.floor(audio.duration % 60);
+                minsDuration = (isNaN(minsDuration)) ? 0 : minsDuration;
+                secsDuration = isNaN(secsDuration) ? '00' : secsDuration;
+                let time =  minsDuration + ':' + secsDuration;
+                $('#duration').html(time);
+                $('#list-duration').html(time);
+                $('#audio-track').attr('max', Math.floor(audio.duration));
+            }, 1000);            
+
+            setInterval(function(){
+                let currentTime = Math.floor(audio.currentTime);
+                let mins = Math.floor(currentTime / 60);  
+                let secs = (currentTime % 60) + 1;
+                secs = (secs < 10) ? '0' + secs : secs;
+                let currentTimer = mins + ":" + secs;
+                $('#current-time').html(currentTimer);
+
+            }, 1000);
+        }
 
         audio.onended = function(){
             $('#btn-next').trigger('click');
