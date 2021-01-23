@@ -227,17 +227,17 @@ $(function(){
                 $('#list-duration').html(time);
                 $('#audio-track').attr('max', Math.floor(audio.duration));
             }, 1000);            
-
-            setInterval(function(){
-                let currentTime = Math.floor(audio.currentTime);
-                let mins = Math.floor(currentTime / 60);  
-                let secs = (currentTime % 60) + 1;
-                secs = (secs < 10) ? '0' + secs : secs;
-                let currentTimer = mins + ":" + secs;
-                $('#current-time').html(currentTimer);
-
-            }, 1000);
         }
+
+        setInterval(function(){
+            let currentTime = Math.floor(audio.currentTime);
+            let mins = Math.floor(currentTime / 60);  
+            let secs = (currentTime % 60) + 1;
+            secs = (secs < 10) ? '0' + secs : secs;
+            let currentTimer = mins + ":" + secs;
+            $('#current-time').html(currentTimer);
+
+        }, 1000);
 
         audio.onended = function(){
             $('#btn-next').trigger('click');
