@@ -161,18 +161,26 @@ $(function(){
             let songs = [];
             let barchart2 = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>';
             let barchart1 = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>';
+            let playBtn = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+            let pauseBtn = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
 
             $('#tbody').empty();
             for (let i = 0; i < res.length; i++) {
                 let content = '';
                 let el = res[i];
+
+                let title = el.title;
+                let artist = el.artist;
+                let newArtist = title + ' - ' + artist;
+                let selectedAudio = el.audio;
+                let params = ["'"+selectedAudio+"'", "'"+title+"'", "'"+artist+"'"];
+
                 if (list == i) {
-                    let artist = el.title + ' - ' + el.artist;
                     content += '\
-                    <tr class="table-primary table-row" id="'+el.id+'">\
+                    <tr class="table-primary table-row" id="table-row-'+el.id+'">\
                         <td>\
-                            <span class="mr-1">'+barchart2+'</span>\
-                            <span>'+artist+'</span>\
+                            <span class="mr-2">'+barchart2+'</span>\
+                            <span>'+newArtist+'</span>\
                         </td>\
                         <td class="d-flex justify-content-end">\
                             <span id="list-duration">0:00</span>\
@@ -180,11 +188,10 @@ $(function(){
                     </tr>';
                 }else{
                     content += '\
-                    <tr class="table-row" id="'+el.id+'">\
+                    <tr class="table-row" id="table-row-'+el.id+'" onclick="selectedList('+params+')">\
                         <td colspan="2">\
-                            <span>'+el.title+'</span>\
-                            <span> - </span>\
-                            <span>'+el.artist+'</span>\
+                            <span class="mr-2">'+playBtn+'</span>\
+                            <span>'+newArtist+'</span>\
                         </td>\
                     </tr>';
                 }
@@ -201,7 +208,6 @@ $(function(){
             const observeThis = $('#current-time')[0];
             const observer = new MutationObserver(function() {
                 $('#audio-track').val(track++);
-
                 if (track == $('#audio-track').attr('max')) {
                     track = 0;
                     $('#audio-track').val(0);
@@ -256,3 +262,7 @@ $(function(){
     //     return array;
     // }
 });
+
+function selectedList(params){
+    console.log(params);
+}
